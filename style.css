@@ -48,11 +48,9 @@ body {
 .frame-wrapper img {
     width: 100%;
     display: block;
-    filter: grayscale(100%);
-    transition: filter 0.6s ease;
+    filter: none; /* Les photos sont maintenant en couleurs dès le départ */
+    transition: transform var(--transition);
 }
-
-.project-item:hover img { filter: grayscale(0%); }
 
 .ultra-thick-frame {
     position: absolute;
@@ -119,53 +117,33 @@ nav {
     box-sizing: border-box;
     pointer-events: none;
     
-   
-    mix-blend-mode: difference;
+    /* C'est cette ligne qui crée l'adaptation magique */
+    mix-blend-mode: difference; 
 }
 
 .brand, .nav-links {
     pointer-events: auto;
 }
 
+/* IMPORTANT : Le texte DOIT être blanc pour que l'inversion fonctionne */
 .brand h1, 
 .discipline, 
 .nav-links a {
     color: #FFFFFF !important; 
-    font-family: 'AvantGardeCustom', sans-serif; 
-
-.nav-links {
-    display: flex;
-    gap: 40px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    font-weight: 500;
-    transition: opacity 0.3s ease;
-}
-
-.nav-links a:hover {
-    opacity: 0.5;
-}
-
-.brand, .nav-links {
-    pointer-events: auto;
-}
-
-.brand h1 .nav-links a {
     font-family: 'AvantGardeCustom', sans-serif !important;
+    margin: 0;
+    text-decoration: none;
+}
+
+.brand h1 {
     font-size: 2rem !important;
     letter-spacing: 2px;
-    margin: 0;
-    color: #000000 !important;
 }
 
 .discipline {
     font-size: 0.9rem !important;
     letter-spacing: 4px;
-    color: #000000 !important;
+    text-transform: uppercase;
 }
 
 .nav-links {
@@ -174,14 +152,8 @@ nav {
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: #000000 !important;
     font-size: 1.2rem !important;
     letter-spacing: 2px;
     font-weight: 500;
     transition: opacity 0.3s ease;
-}
-
-.nav-links a:hover {
-    opacity: 0.4;
 }
