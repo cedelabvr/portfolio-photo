@@ -116,8 +116,6 @@ nav {
     z-index: 9999; 
     box-sizing: border-box;
     pointer-events: none;
-    
-    /* C'est cette ligne qui crée l'adaptation magique */
     mix-blend-mode: difference; 
 }
 
@@ -125,35 +123,14 @@ nav {
     pointer-events: auto;
 }
 
-/* IMPORTANT : Le texte DOIT être blanc pour que l'inversion fonctionne */
-.brand h1, 
-.discipline, 
-.nav-links a {
+.brand h1, .discipline, .nav-links a {
     color: #FFFFFF !important; 
     font-family: 'AvantGardeCustom', sans-serif !important;
     margin: 0;
     text-decoration: none;
 }
 
-.brand h1 {
-    font-size: 2rem !important;
-    letter-spacing: 2px;
-}
-
-.discipline {
-    font-size: 0.9rem !important;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-}
-
-.nav-links {
-    display: flex;
-    gap: 40px;
-}
-
-.nav-links a {
-    font-size: 1.2rem !important;
-    letter-spacing: 2px;
-    font-weight: 500;
-    transition: opacity 0.3s ease;
-}
+.brand h1 { font-size: 2rem !important; letter-spacing: 2px; }
+.discipline { font-size: 0.9rem !important; letter-spacing: 4px; text-transform: uppercase; }
+.nav-links { display: flex; gap: 40px; }
+.nav-links a { font-size: 1.2rem !important; letter-spacing: 2px; font-weight: 500; transition: opacity 0.3s ease; }
