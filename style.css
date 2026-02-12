@@ -48,7 +48,7 @@ body {
 .frame-wrapper img {
     width: 100%;
     display: block;
-    filter: none; /* Les photos sont maintenant en couleurs dès le départ */
+    filter: none; 
     transition: transform var(--transition);
 }
 
