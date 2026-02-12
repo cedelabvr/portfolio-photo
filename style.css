@@ -1,0 +1,187 @@
+@font-face {
+    font-family: 'AvantGardeCustom';
+    src: url('fonts/itc-avant-garde.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --bg-color: #E5E5E5;
+    --transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    --frame-thick: -45px; /* Épaisseur du cadre blanc */
+}
+
+body {
+    background-color: var(--bg-color);
+    margin: 0;
+    font-family: 'AvantGardeCustom', sans-serif; /* Ta nouvelle police ici */
+}
+/* La Grille Maîtresse */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 20px; /* On resserre l'espace horizontal */
+    row-gap: 0; /* On gère tout manuellement pour coller les photos */
+    padding: 150px 5% 100px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.project-item {
+    position: relative;
+    z-index: 1;
+    transition: z-index 0.3s;
+}
+
+.project-item:hover { z-index: 100; }
+
+.frame-wrapper {
+    position: relative;
+    transition: transform var(--transition);
+    cursor: pointer;
+}
+
+.project-item:hover .frame-wrapper {
+    transform: scale(1.05); /* Zoom subtil */
+}
+
+.frame-wrapper img {
+    width: 100%;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.6s ease;
+}
+
+.project-item:hover img { filter: grayscale(0%); }
+
+.ultra-thick-frame {
+    position: absolute;
+    top: var(--frame-thick); left: var(--frame-thick);
+    right: var(--frame-thick); bottom: var(--frame-thick);
+    background: #fff;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.project-item:hover .ultra-thick-frame { opacity: 1; }
+
+/* --- POSITIONS AJUSTÉES : PLUS GRANDES ET CHEVAUCHÉES --- */
+
+/* --- RÉPARTITION DENSE ET HARMONIEUSE --- */
+
+.item-1 { grid-column: 1 / 6; } /* Un peu plus large pour l'impact */
+.item-2 { grid-column: 6 / 10; margin-top: 50px; } 
+.item-3 { grid-column: 9 / 13; margin-top: -30px; } 
+
+/* Ligne 2 : On vient "mordre" sur la ligne 1 */
+.item-4 { grid-column: 2 / 6; margin-top: -100px; } /* Remonte dans le vide sous l'item 1 */
+.item-5 { grid-column: 6 / 11; margin-top: -20px; }
+.item-6 { grid-column: 1 / 5; margin-top: -50px; } 
+
+/* Ligne 3 : On bouche le centre */
+.item-7 { grid-column: 4 / 9; margin-top: -120px; } /* S'imbrique entre 4 et 5 */
+.item-8 { grid-column: 9 / 13; margin-top: -40px; }
+.item-9 { grid-column: 1 / 5; margin-top: -20px; }
+
+/* Ligne 4 : On finit de remplir */
+.item-10 { grid-column: 5 / 9; margin-top: -150px; } /* Monte très haut pour boucher le trou central */
+.item-11 { grid-column: 9 / 13; margin-top: -30px; }
+.item-12 { grid-column: 2 / 7; margin-top: -60px; margin-bottom: 100px; }
+/* --- OPTIMISATION DE LA GRILLE --- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 30px; /* Espace horizontal réduit pour resserrer les photos */
+    row-gap: 0; /* On gère l'espace vertical uniquement avec les marges pour plus de précision */
+    padding: 180px 4% 100px 4%;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+/* Responsive mobile */
+@media (max-width: 900px) {
+    .gallery { grid-template-columns: 1fr; gap: 100px; }
+    .project-item { grid-column: 1 / -1 !important; margin: 0 !important; }
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 60px 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; 
+    box-sizing: border-box;
+    pointer-events: none;
+    
+   
+    mix-blend-mode: difference;
+}
+
+.brand, .nav-links {
+    pointer-events: auto;
+}
+
+.brand h1, 
+.discipline, 
+.nav-links a {
+    color: #FFFFFF !important; 
+    font-family: 'AvantGardeCustom', sans-serif; 
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.5;
+}
+
+.brand, .nav-links {
+    pointer-events: auto;
+}
+
+.brand h1 .nav-links a {
+    font-family: 'AvantGardeCustom', sans-serif !important;
+    font-size: 2rem !important;
+    letter-spacing: 2px;
+    margin: 0;
+    color: #000000 !important;
+}
+
+.discipline {
+    font-size: 0.9rem !important;
+    letter-spacing: 4px;
+    color: #000000 !important;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000000 !important;
+    font-size: 1.2rem !important;
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.4;
+}
